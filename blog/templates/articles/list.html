@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  List articles
+{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Articles list:</h1>
+        {% for art_id in articles %}
+          <ul>
+              <li><a href="{{url_for('articles_app.get_article', pk=art_id)}}">{{articles[art_id]}}</a></li>
+          </ul>
+        {%endfor%}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
