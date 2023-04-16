@@ -9,6 +9,11 @@
         <a class="nav-link" href="{{url_for('index_app.main_page')}}">Home</a>
         <a class="nav-link" href="{{url_for('users_app.user_list')}}">Users</a>
         <a class="nav-link" href="{{url_for('articles_app.articles_list')}}">Articles</a>
+        {% if current_user.is_authenticated %}
+             <a class="nav-link active" href="{{ url_for('auth_app.logout') }}">Logout</a>
+         {% else %}
+             <a class="nav-link active" href="{{ url_for('auth_app.login') }}">Login</a>
+         {% endif %}
       </div>
     </div>
   </div>
