@@ -3,6 +3,7 @@ from flask import Flask
 
 from .auth.views import auth_app
 from .extension import db, login_manager, migrate
+
 from blog.articles.views import articles_app
 from blog.index.views import index_app
 from blog.users.views import users_app
@@ -21,6 +22,7 @@ def create_app() -> Flask:
 def register_extensions(app):
     db.init_app(app)
     migrate.init_app(app, db, compare_type=True)
+
     login_manager.login_view = 'auth_app.login'
     login_manager.init_app(app)
 
