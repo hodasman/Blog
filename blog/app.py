@@ -2,7 +2,8 @@ from flask import Flask
 
 
 from .auth.views import auth_app
-from .extension import db, login_manager
+from .extension import db, login_manager, migrate
+
 from blog.articles.views import articles_app
 from blog.index.views import index_app
 from blog.users.views import users_app
@@ -11,9 +12,8 @@ from .models import User
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = '=&kpz4*c7d98-h6uguv4n(%u-t+8jcw@witq+*ye46&7^=3zw3'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite"
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config.from_object('blog.config')
+
     register_extensions(app)
     register_blueprints(app)
     return app
@@ -21,6 +21,8 @@ def create_app() -> Flask:
 
 def register_extensions(app):
     db.init_app(app)
+    migrate.init_app(app, db, compare_type=True)
+
     login_manager.login_view = 'auth_app.login'
     login_manager.init_app(app)
 
