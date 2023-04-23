@@ -20,9 +20,9 @@ def create_app() -> Flask:
 
 
 def register_extensions(app):
-    db.init_app(app)
-    migrate.init_app(app, db, compare_type=True)
 
+    migrate.init_app(app, db, compare_type=True)
+    db.init_app(app)
     login_manager.login_view = 'auth_app.login'
     login_manager.init_app(app)
 
