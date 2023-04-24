@@ -4,14 +4,14 @@ from blog.app import create_app, db
 app = create_app()
 
 
-@app.cli.command("init-db")
-def init_db():
-    """
-    Run in your terminal:
-    flask init-db
-    """
-    db.create_all()
-    print("done!")
+# @app.cli.command("init-db")
+# def init_db():
+#     """
+#     Run in your terminal:
+#     flask init-db
+#     """
+#     db.create_all()
+#     print("done!")
 
 
 @app.cli.command("create-users")
