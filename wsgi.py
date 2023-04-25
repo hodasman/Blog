@@ -28,3 +28,19 @@ def create_users():
     db.session.add(james)
     db.session.commit()
     print("done! created users:", admin, james)
+
+
+@app.cli.command("create-articles")
+def create_articles():
+    """
+    Run in your terminal:
+    flask create-articles
+    > done! created articles: <Article #1 'Travel in India'> <Article #2 'Football match'>
+    """
+    from blog.models import Article
+    travel = Article(title="Travel in India", text="Text text text")
+    football = Article(title="Football match", text="Text text text")
+    db.session.add(travel)
+    db.session.add(football)
+    db.session.commit()
+    print("done! created users:", travel, football)
