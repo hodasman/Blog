@@ -25,6 +25,6 @@ def get_article(pk: int):
     _article = Article.query.filter_by(id=pk).one_or_none()
     if not _article:
         raise NotFound(f'Article {pk} not found')
-    return render_template('articles/detail.html', user=_article)
+    return render_template('articles/detail.html', article=_article)
 
 
