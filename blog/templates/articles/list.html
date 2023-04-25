@@ -8,9 +8,9 @@
   <div class="row">
     <div class="col">
       <h1>Articles list:</h1>
-        {% for art_id in articles %}
+        {% for article in articles %}
           <ul>
-              <li><a href="{{url_for('articles_app.get_article', pk=art_id)}}">{{articles[art_id]}}</a></li>
+              <li><a href="{{url_for('articles_app.get_article', pk=article.id)}}">{{article.title}}</a></li>
           </ul>
         {%endfor%}
     </div>
