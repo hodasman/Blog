@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash
-
+from blog.models import User
 
 from blog.forms.auth import UserLoginForm
 
@@ -18,9 +18,7 @@ def login():
 
 @auth_app.route('/login', methods=('POST',))
 def login_post():
-    from blog.models import User
     form = UserLoginForm(request.form)
-
     if request.method == 'POST' and form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
 

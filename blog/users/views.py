@@ -3,7 +3,7 @@ from flask_login import login_required, login_user, current_user
 from werkzeug.exceptions import NotFound
 from werkzeug.security import generate_password_hash
 
-from blog.extension import db
+from blog.extensions import db
 from blog.forms.user import UserRegisterForm
 from blog.models import User
 
