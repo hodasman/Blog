@@ -6,8 +6,8 @@ from blog.enums import EnvType
 
 load_dotenv()
 
-ENV = os.getenv('FLASK_ENV', default=EnvType.production)
-DEBUG = ENV == EnvType.development
+ENV = os.getenv('FLASK_ENV', default=EnvType.PRODUCTION)
+DEBUG = ENV == EnvType.DEVELOPMENT
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
