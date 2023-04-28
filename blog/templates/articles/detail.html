@@ -5,7 +5,10 @@
 {% endblock %}
 {% block body %}
 <h1>{{ article.title }}</h1>
-<p>{{ article.text }}</p>
+<div class="row">
+        <div class="col-md-12">{{ article.text }}</div>
+</div>
 <div>Created at: {{article.created_at}}</div>
 <div>Author: {{article.author.user.username}}</div>
+
 {% endblock %}
