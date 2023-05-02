@@ -4,9 +4,6 @@ from blog.extensions import db, login_manager, migrate, csrf
 from blog.articles.views import articles_app
 
 
-
-
-
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_object('blog.config')
@@ -45,3 +42,4 @@ def register_blueprints(app: Flask):
 def register_commands(app: Flask):
     app.cli.add_command(commands.init_db)
     app.cli.add_command(commands.create_init_user)
+    app.cli.add_command(commands.create_init_tags)
