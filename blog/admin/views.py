@@ -2,6 +2,7 @@ from flask_admin import AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user
 from flask import redirect, url_for
+from sqlalchemy import inspect
 
 
 class CustomAdminView(ModelView):
@@ -39,10 +40,12 @@ class TagAdminView(CustomAdminView):
 
 
 class AuthorAdminView(CustomAdminView):
-    pass
+    column_display_pk = True
+    column_hide_backrefs = False
 
 
 class ArticleAdminView(CustomAdminView):
+    column_hide_backrefs = False
     can_export = True
     export_types = ('csv', 'xlsx')
     column_filters = ('author_id',)

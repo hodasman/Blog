@@ -47,6 +47,7 @@ class Author(db.Model):
     def __str__(self):
         return self.user.username
 
+
 class Article(db.Model):
     __tablename__ = "articles"
 
