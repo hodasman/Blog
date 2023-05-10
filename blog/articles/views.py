@@ -1,3 +1,6 @@
+from typing import Dict
+
+import requests
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
@@ -13,7 +16,9 @@ articles_app = Blueprint('articles_app', __name__, static_folder='../static', ur
 @articles_app.route('/', methods=['GET'])
 def articles_list():
     _articles = Article.query.all()
-    return render_template('articles/list.html', articles=_articles)
+    count_articles: Dict = requests.get('http://127.0.0.1:5000/api/articles/event_get_count/').json()
+    return render_template('articles/list.html', articles=_articles,
+                           count_articles=count_articles['count'],)
 
 
 @articles_app.route('/', methods=['POST'])
