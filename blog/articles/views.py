@@ -69,5 +69,3 @@ def create_article_form():
     form = ArticleAddForm(request.form)
     form.tags.choices = [(tag.id, tag.name) for tag in Tag.query.order_by('name')]
     return render_template('articles/create.html', form=form)
-
-
