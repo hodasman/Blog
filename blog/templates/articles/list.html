@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Articles list ():</h1>
+      <h1>Articles list ({{ count_articles }}):</h1>
         {% for article in articles %}
           <ul>
               <li><a href="{{url_for('articles_app.get_article', pk=article.id)}}">{{article.title}}</a></li>
