@@ -17,9 +17,12 @@ articles_app = Blueprint('articles_app', __name__, static_folder='../static', ur
 @articles_app.route('/', methods=['GET'])
 def articles_list():
     _articles = Article.query.all()
-    count_articles: Dict = requests.get('https://flask-deploy-3zyo.onrender.com/api/articles/event_get_count/').json()
-    return render_template('articles/list.html', articles=_articles,
-                           count_articles=count_articles['count'],)
+    count_articles: Dict = requests.get('http://127.0.0.1:5000/api/articles/event_get_count/').json()
+    return render_template(
+        'articles/list.html',
+        articles=_articles,
+        count_articles=count_articles['count'],
+    )
 
 
 @articles_app.route('/', methods=['POST'])
