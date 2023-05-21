@@ -21,7 +21,7 @@ class CustomAdminView(ModelView):
         return current_user.is_authenticated and current_user.is_staff
 
     def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth_app.login'))
 
 
 class CustomAdminIndexView(AdminIndexView):
@@ -29,7 +29,7 @@ class CustomAdminIndexView(AdminIndexView):
     @expose()
     def index(self):
         if not (current_user.is_authenticated and current_user.is_staff):
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('auth_app.login'))
         return super().index()
 
 
